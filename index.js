@@ -22,6 +22,6 @@ fetch(URL + "elenco" + document.getElementById("input").value)
    .then(data => {
     console.log(data);
     data.forEach( c => {
-      console.log(c);document.getElementById("cityList").innerHtml += "<li> " + c })
+      console.log(c);document.getElementById("cityList").innerHTML += "<li> " + c })
    });
 
