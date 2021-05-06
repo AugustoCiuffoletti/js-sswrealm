@@ -11,18 +11,16 @@ function $(s) {
 }
 
 function download() {
-  fetch(URL + "cerca?n=" + $("input").value)
-    .then(response => response.json(), error => alert(error))
-    .then(data => ($("temp").innerHTML = data));
-}
-
-function aggiornato(newCity) {
   fetch(URL + "aggiornato?n=" + newCity)
     .then(response => response.json(), error => alert(error))
     .then(data => {
       console.log(data)
-      refreshList();
+      data => ($("temp").innerHTML = data)
     });
+}
+
+function aggiornato(newCity) {
+  
 }
 
 function insert() {
@@ -30,11 +28,9 @@ function insert() {
   if ( newCity === "" ) return;
   fetch(URL + "inserisci?n=" + newCity)
     .then(response => response.json(), error => alert(error))
-    .then(data => {
+    .then( () => {
       cities.push(newCity);
-      aggiornato(newCity)
-        .then(response => response.json(), error => alert(error))
-        .then( () => { refreshList(); });
+      refreshList();
     });
 }
 
