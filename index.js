@@ -21,7 +21,7 @@ function insert() {
   if ( newCity === "" ) return;
   fetch(URL + "inserisci?n=" + newCity)
     .then(response => response.json(), error => alert(error))
-    .then(data => {
+    .then( () => {
       cities.push(newCity);
       refreshList();
     });
