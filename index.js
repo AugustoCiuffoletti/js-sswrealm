@@ -20,6 +20,7 @@ function aggiornato(newCity) {
   fetch(URL + "aggiornato?n=" + newCity)
     .then(response => response.json(), error => alert(error))
     .then(data => {
+      console.log(data)
       refreshList();
     });
 }
@@ -31,10 +32,9 @@ function insert() {
     .then(response => response.json(), error => alert(error))
     .then(data => {
       cities.push(newCity);
-      refreshList();
       aggiornato(newCity)
         .then(response => response.json(), error => alert(error))
-        .then(data => { console.log(data)});
+        .then( () => { refreshList(); });
     });
 }
 
