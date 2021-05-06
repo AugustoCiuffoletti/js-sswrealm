@@ -7,10 +7,9 @@ function download() {
   fetch(URL + document.getElementById("input").value)
     .then(response => response.json(), error => alert(error))
     .then(
-      data => {
-        console.log(data);
+      data =>
         (document.getElementById("temp").innerHTML =
-          data.temperatura.$numberInt)}
+          data.temperatura.$numberInt)
     );
 }
 
