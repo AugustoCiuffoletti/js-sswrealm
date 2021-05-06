@@ -16,11 +16,10 @@ function download() {
     .then(data => ($("temp").innerHTML = data));
 }
 
-function aggiornato() {
-  fetch(URL + "inserisci?n=" + newCity)
+function aggiornato(newCity) {
+  fetch(URL + "aggiornato?n=" + newCity)
     .then(response => response.json(), error => alert(error))
     .then(data => {
-      cities.push(newCity);
       refreshList();
     });
 }
