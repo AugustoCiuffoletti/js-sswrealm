@@ -11,11 +11,11 @@ function $(s) {
 }
 
 function download() {
-  fetch(URL + "aggiornato?n=" + newCity)
+  fetch(URL + "aggiornato?n=" + $("input").value)
     .then(response => response.json(), error => alert(error))
     .then(data => {
       console.log(data)
-      data => ($("temp").innerHTML = data)
+      $("temp").innerHTML = data
     });
 }
 
