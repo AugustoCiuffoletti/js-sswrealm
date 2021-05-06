@@ -9,7 +9,7 @@ function download() {
     .then(
       data =>
         (document.getElementById("temp").innerHTML =
-          data.temperatura.$numberInt)
+          data.temperatura.$numberLong)
     );
 }
 
