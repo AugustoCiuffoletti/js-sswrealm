@@ -21,14 +21,12 @@ function insert() {
   fetch(URL + "inserisci?n=" + newCity)
     .then(response => response.json(), error => alert(error))
     .then(data => {
-      console.log(data);
       cities.push(newCity);
       refreshList();
     });
 }
 
 function refreshList() {
-  console.log("faccio");
   $("cityList").innerHTML = "";
   cities.forEach(c => ($("cityList").innerHTML += "<li> " + c));
 }
