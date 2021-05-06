@@ -16,6 +16,15 @@ function download() {
     .then(data => ($("temp").innerHTML = data));
 }
 
+function aggiornato() {
+  fetch(URL + "inserisci?n=" + newCity)
+    .then(response => response.json(), error => alert(error))
+    .then(data => {
+      cities.push(newCity);
+      refreshList();
+    });
+}
+
 function insert() {
   let newCity = $("nuovo").value;
   fetch(URL + "inserisci?n=" + newCity)
@@ -23,6 +32,9 @@ function insert() {
     .then(data => {
       cities.push(newCity);
       refreshList();
+      aggiornato(newCity)
+        .then(response => response.json(), error => alert(error))
+        .then(data => { console.log(data)});
     });
 }
 
