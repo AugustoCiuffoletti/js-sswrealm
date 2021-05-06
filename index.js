@@ -19,10 +19,6 @@ function download() {
     });
 }
 
-function aggiornato(newCity) {
-  
-}
-
 function insert() {
   let newCity = $("nuovo").value;
   if ( newCity === "" ) return;
