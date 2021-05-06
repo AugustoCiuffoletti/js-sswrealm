@@ -4,7 +4,7 @@ import "./style.css";
 var URL =
   "https://webhooks.mongodb-realm.com/api/client/v2.0/app/temperature-lwkwk/service/temperature/incoming_webhook/";
 
-var cities;
+var cities=[];
 
 function $(s) {
   return document.getElementById(s);
@@ -22,21 +22,20 @@ function insert() {
     .then(response => response.json(), error => alert(error))
     .then(data => {
       console.log(data);
-      city.push(newCity);
+      cities.push(newCity);
+      refreshList();
     });
 }
 
 function refreshList() {
+  console.log("faccio");
   $("cityList").innerHTML = "";
-  data.forEach(c => ($("cityList").innerHTML += "<li> " + c));
+  cities.forEach(c => ($("cityList").innerHTML += "<li> " + c));
 }
 
 $("chiedi").addEventListener("click", download);
 $("inserisci").addEventListener("click", insert);
 
 fetch(URL + "elenco" + $("input").value)
-  .then(
-    response => response.json(), error => alert(error))
-  .then(
-    data => data.forEach(c => ($("cityList").innerHTML += "<li> " + c))
-  );
+  .then(response => response.json(), error => alert(error))
+  .then(data => { cities = data; refreshList()} );
