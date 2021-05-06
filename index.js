@@ -26,6 +26,7 @@ function aggiornato(newCity) {
 
 function insert() {
   let newCity = $("nuovo").value;
+  if ( newCity === "" ) return;
   fetch(URL + "inserisci?n=" + newCity)
     .then(response => response.json(), error => alert(error))
     .then(data => {
