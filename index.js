@@ -1,16 +1,39 @@
 // Import stylesheets
 import "./style.css";
 
-function download() {
-  let URL =
-    "https://webhooks.mongodb-realm.com/api/client/v2.0/app/temperature-lwkwk/service/temperature/incoming_webhook/cerca0?n=";
-  fetch(URL + document.getElementById("input").value)
-    .then(response => response.json(), error => alert(error))
-    .then(
-      data =>
-        (document.getElementById("temp").innerHTML =
-          data.temperatura.$numberInt)
-    );
+var URL =
+  "https://webhooks.mongodb-realm.com/api/client/v2.0/app/temperature-lwkwk/service/temperature/incoming_webhook/";
+
+var cities=[];
+
+function $(s) {
+  return document.getElementById(s);
 }
 
-document.getElementById("chiedi").addEventListener("click", download);
+function download() {
+  fetch(URL + "cerca?n=" + $("input").value)
+    .then(response => response.json(), error => alert(error))
+    .then(data => ($("temp").innerHTML = data));
+}
+
+function insert() {
+  let newCity = $("nuovo").value;
+  fetch(URL + "inserisci?n=" + newCity)
+    .then(response => response.json(), error => alert(error))
+    .then(data => {
+      cities.push(newCity);
+      refreshList();
+    });
+}
+
+function refreshList() {
+  $("cityList").innerHTML = "";
+  cities.forEach(c => ($("cityList").innerHTML += "<li> " + c));
+}
+
+$("chiedi").addEventListener("click", download);
+$("inserisci").addEventListener("click", insert);
+
+fetch(URL + "elenco" + $("input").value)
+  .then(response => response.json(), error => alert(error))
+  .then(data => { cities = data; refreshList()} );
