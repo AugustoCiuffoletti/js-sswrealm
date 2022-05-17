@@ -38,6 +38,6 @@ function refreshList() {
 $("chiedi").addEventListener("click", download);
 $("inserisci").addEventListener("click", insert);
 
-fetch(URL + "elenco" + $("input").value)
+fetch(URL + "elenco")
   .then(response => response.json(), error => alert(error))
   .then(data => { cities = data; refreshList()} );
