@@ -6,7 +6,7 @@ function download() {
     "https://data.mongodb-api.com/app/temperature-lwkwk/endpoint/cerca0?n=";
   fetch(URL + document.getElementById("input").value)
     .then(response => response.json(), error => alert(error))
-    .then(data => (document.getElementById("temp").innerHTML = JSON.stringify(data)));
+    .then(data => (document.getElementById("temp").innerHTML = data.temperature));
 }
 
 document.getElementById("chiedi").addEventListener("click", download);
