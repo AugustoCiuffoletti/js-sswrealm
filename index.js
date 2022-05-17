@@ -20,7 +20,7 @@ function download() {
 
 $('chiedi').addEventListener('click', download);
 
-fetch(URL + 'elenco' + $('input').value)
+fetch(URL + 'elenco')
   .then(
     (response) => response.json(),
     (error) => alert(error)
