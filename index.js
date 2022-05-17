@@ -2,7 +2,7 @@
 import "./style.css";
 
 var URL =
-  "https://webhooks.mongodb-realm.com/api/client/v2.0/app/temperature-lwkwk/service/temperature/incoming_webhook/";
+  "https://data.mongodb-api.com/app/temperature-lwkwk/endpoint/";
 
 var cities=[];
 
