@@ -10,7 +10,7 @@ function $(s) {
 }
 
 function download() {
-  fetch(URL + 'aggiornato?n=' + $('input').value)
+  fetch(URL + 'acquisisci?n=' + $('input').value)
     .then(
       (response) => response.json(),
       (error) => alert(error)
