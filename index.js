@@ -1,7 +1,7 @@
 // Import stylesheets
 import './style.css';
 
-var URL = 'https://data.mongodb-api.com/app/temperature-lwkwk/endpoint/';
+var URL = 'https://eu-west-2.aws.data.mongodb-api.com/app/temperature-lxqlq/endpoint/';
 
 var cities = [];
 
